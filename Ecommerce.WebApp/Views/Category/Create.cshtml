@@ -1,0 +1,17 @@
+﻿@model CategoryCreate
+
+
+
+<form action="" method="post">
+    <div class="form-inline">
+        <div class="form-group">
+            <label for="name">Category Id</label>
+            <Input type="text" class="form-control" asp-for="CategoryCode" placeholder="Category ID">
+        </div>
+        <div class="form-group">
+            <label for="name">Category Name</label>
+            <input type="text" class="form-control" asp-for="CategoryName" placeholder="Category Name">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Create Category</button>
+</form>
