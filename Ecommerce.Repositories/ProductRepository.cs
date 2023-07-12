@@ -60,6 +60,7 @@ namespace Ecommerce.Repositories
             return _db.Products.ToList();
         }
 
+
         //public ICollection<Product> Search(CustomerSearchCriteria searchCriteria)
         //{
         //    var customers = _db.Customers.AsQueryable();

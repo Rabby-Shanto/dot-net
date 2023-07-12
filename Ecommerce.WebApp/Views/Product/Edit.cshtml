@@ -1,0 +1,63 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using Ecommerce.Repositories;
+@model ProductEditVM
+
+@{
+    CategoryRepository categoryRepository;
+    categoryRepository = new CategoryRepository();
+    var categories = categoryRepository.GetAll();
+}
+
+
+<h4>Product Edit</h4>
+
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-inline">
+        <div class="form-group">
+            <label for="name">ProductName</label>
+            <Input type="text" class="form-control" asp-for="ProductName" placeholder="Product Name">
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" asp-for="price" placeholder="Product Price">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="size">Size</label>
+        <input type="text" class="form-control" asp-for="size" placeholder="Product Size">
+    </div>
+    <div class="form-group">
+        <label for="color">Product Color</label>
+        <input type="text" class="form-control" asp-for="color" placeholder="Product Color">
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select asp-for="CategoryID" class="form-control">
+            @foreach (var c in categories)
+            {
+                <option value="@c.Id"> @c.CategoryName</option>
+            }
+
+
+        </select>
+    </div>
+
+
+    <div class="form-group">
+        <label for="desc">Description</label>
+        <textarea class="form-control" asp-for="Description" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@if (ViewBag.Error != null)
+{
+    <h6>@ViewBag.Error</h6>
+}
+

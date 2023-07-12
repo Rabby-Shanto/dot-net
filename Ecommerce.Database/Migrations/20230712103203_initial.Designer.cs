@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ecommerce.Database.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230711141743_initial")]
+    [Migration("20230712103203_initial")]
     partial class initial
     {
         /// <inheritdoc />

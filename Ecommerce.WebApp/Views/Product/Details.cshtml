@@ -1,0 +1,34 @@
+﻿@using Ecommerce.Models.EntityModels;
+@model Product
+
+
+<div class="container">        
+    
+    <div class="card mb-3">
+        <div class="card-header bg-warning border-2"><h1>Product</h1></div>
+      <div class="card-body">
+        <h5 class="card-title badge text-black bg-success">Details for Products</h5>
+        <div class="lead">
+          @Html.DisplayNameFor(model => model.ProductName) :
+          @Html.DisplayFor(model => model.ProductName)
+        </div>
+
+        <div class="lead">
+         @Html.DisplayNameFor(model => model.price) :
+         @Html.DisplayFor(model => model.price)
+        </div>
+
+        <div class="lead">
+        @Html.DisplayNameFor(model => model.size) :
+        @Html.DisplayFor(model => model.size)
+        </div>
+      
+      </div>
+        <div class="card-footer bg-transparent">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-danger"><i class="fa fa-pencil"></i></a>
+            <a asp-action="Index" class="btn btn-success"><i class="fa fa-list"></i></a>
+        </div>
+    </div>
+    </div>            
+          
+

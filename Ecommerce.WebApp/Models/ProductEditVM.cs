@@ -18,5 +18,7 @@ namespace Ecommerce.WebApp.Models
         public string color { get; set; }
 
         public string Description { get; set; }
+
+        public int CategoryID { get; set; }
     }
 }

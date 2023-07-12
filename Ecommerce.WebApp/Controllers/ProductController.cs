@@ -36,7 +36,12 @@ namespace Ecommerce.WebApp.Controllers
         //    return View(customerListModel);
         //}
 
+        public IActionResult Index()
+        {
 
+            var products = _productRepository.GetAll();
+            return View(products);
+        }
         public IActionResult Create()
         {
             return View();
@@ -73,6 +78,7 @@ namespace Ecommerce.WebApp.Controllers
         }
 
         public IActionResult Edit(int? id)
+        
         {
             if (id == null || id <= 0)
             {
@@ -90,10 +96,12 @@ namespace Ecommerce.WebApp.Controllers
 
             var model = new ProductEditVM()
             {
+                Id = product.Id,
                 ProductName = product.ProductName,
                 price = product.price,
                 size = product.size,
                 color = product.color,
+                CategoryID = product.CategoryID,
                 Description = product.Description
             };
 
@@ -117,6 +125,7 @@ namespace Ecommerce.WebApp.Controllers
                 product.price = model.price;
                 product.size = model.size;
                 product.color = model.color;
+                product.CategoryID = model.CategoryID;
                 product.Description = model.Description;
 
 
@@ -128,6 +137,40 @@ namespace Ecommerce.WebApp.Controllers
             }
 
             return View(model);
+        }
+
+        public IActionResult Details(int id)
+        {
+
+            Product product = _productRepository.GetById(id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
+
+        }
+
+        public IActionResult Delete(int id)
+        {
+            Product product = _productRepository.GetById(id);
+            if (product == null)
+            {
+                return NotFound();
+
+            }
+            return View(product);
+        }
+
+        [HttpPost, ActionName("Delete")][ValidateAntiForgeryToken]
+
+        public IActionResult DeleteConfirmed(Product product)
+        {
+            _productRepository.Delete(product);
+
+            return RedirectToAction("Index");
         }
 
     }
